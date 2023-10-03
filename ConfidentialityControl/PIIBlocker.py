@@ -3,8 +3,10 @@ import scrubadub, scrubadub_spacy
 from typing import Optional, Union
 import re
 
-from src.controls.ConfidentialityControl.UniqueDetector import UniqueDetector
-from src.controls.ConfidentialityControl.WhitelistScrubber import WhitelistScrubber
+import spacy_transformers
+
+from ConfidentialityControl.UniqueDetector import UniqueDetector
+from ConfidentialityControl.WhitelistScrubber import WhitelistScrubber
 
 class PIIBlocker(object):
     """
