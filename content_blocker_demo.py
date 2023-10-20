@@ -99,6 +99,6 @@ def content_guardrails_poc(user_message):
     output = pydantic_content_guardrails_test(user_message)
     return output
 
-    
+
 if __name__ == "__main__":
     content_guardrails_poc(sys.argv[1])
