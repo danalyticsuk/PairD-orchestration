@@ -44,9 +44,11 @@ define bot explain cant off topic
 define bot explain cant innapropriate
   "I'm sorry, I cannot answer this question as it goes against Deloitte's ethics guidelines."
 
-define flow
+define flow irrelevant
   user ask off topic
   bot explain cant off topic
 
+define flow innapropriate
   user ask innapropriate
   bot explain cant innapropriate
+
