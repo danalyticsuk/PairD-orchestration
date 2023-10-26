@@ -7,7 +7,6 @@ import fastapi
 
 from app.saved_query import saved_query
 
-
 router = fastapi.APIRouter()
 
 # Define data model class
