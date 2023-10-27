@@ -66,19 +66,3 @@ ai_institute
 
 # mkdocs documentation
 /site
-
-# Other documents:
-
-ConfidentialityControl
-nemo_config
-Upload Documents
-backup.txt
-Cloud Services Root CA.crt
-content_blocker_demo.py
-Guardrails testing.ipynb
-nemo_test.py
-nemoguardrails
-pii_blocker_demo.py
-pii.txt
-
-
