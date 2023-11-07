@@ -1,3 +1,4 @@
+# First draft - will likely edit this later
 FROM python:3.11
 
 ENV PATH=/venv/bin:$PATH
