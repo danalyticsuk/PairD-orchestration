@@ -17,7 +17,6 @@ router = fastapi.APIRouter()
 @router.get("/processed_query")
 async def get_processed_query():
 
-    dict_id = "user query"
-    edited_query = saved_query.get(dict_id, "Query not found")
+    edited_query = saved_query.get("user query", "Query not found")
 
     return {"edited_query": edited_query}

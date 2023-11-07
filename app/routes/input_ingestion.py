@@ -6,6 +6,8 @@ This endpoint ingests raw user queries.
 import fastapi
 from pydantic import BaseModel
 
+import pdb
+
 from app.PIIBlocker import PIIBlocker
 from app.saved_query import saved_query
 
@@ -30,6 +32,12 @@ class InputGuardrails():
         self.pii_dict = pii_blocker.get_pii(self.user_query)
         self.pii_scrubber = pii_blocker._scrubber
 
+        if self.pii_dict:
+            self.pii_detected = True
+        else:
+            self.pii_detected = False
+
+
     def content_guardail(self):
 
         pass
@@ -49,26 +57,11 @@ async def ingest_query(user_query: UserQuery):
     input_guardrails.pii_blocker()
 
     edited_query = input_guardrails.blocked_user_query
-    pii_dict = input_guardrails.pii_dict
-
-    # edited_query = apply_guardrails(user_query.query)
 
     saved_query["user query"] = edited_query
-    # saved_query["pii dict"] = pii_dict
-
-    saved_query["pii dict"] = input_guardrails.pii_scrubber
+    saved_query["pii scrubber"] = input_guardrails.pii_scrubber
+    saved_query["pii dict"] = input_guardrails.pii_dict
+    saved_query["pii flag"] = input_guardrails.pii_detected
 
     return {"message": "Query ingested successfully."}
-
-
-"""
-def apply_guardrails(user_query):
-
-    # PII Blocker:
-    pii_blocker = PIIBlocker()
-    blocked_user_query = pii_blocker.block(user_query)
-    
-    return "Guardrails applied to: " + blocked_user_query
-
-"""
 

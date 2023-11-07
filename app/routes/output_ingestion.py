@@ -26,7 +26,7 @@ async def ingest_llm_response(llm_response: LLMResponse):
 
     # PII mask applied
     if saved_query:
-        pii_dict = saved_query.get("pii dict", "Query not found")
+        pii_dict = saved_query.get("pii scrubber", "Query not found")
 
         pii_blocker = PIIBlocker()
         pii_blocker._scrubber = pii_dict
