@@ -1,9 +1,1 @@
-__pycache__
-routes
-__init__.py
-app.py
-Dockerfile
-PIIBlocker.py
-saved_query.py
-UniqueDetector.py
-WhitelistScrubber.py
+app/
