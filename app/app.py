@@ -1,6 +1,5 @@
 # Dependency Imports
 import fastapi
-import loguru
 
 # Initialize app:
 app = fastapi.FastAPI()

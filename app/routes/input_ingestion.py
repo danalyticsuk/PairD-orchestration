@@ -54,6 +54,10 @@ async def ingest_query(user_query: UserQuery):
 
     # Guardrails logic goes here:
     input_guardrails = InputGuardrails(user_query.query)
+
+    if not user_query.query:
+        raise fastapi.HTTPException(status_code=422, detail="Input string cannot be empty")
+
     input_guardrails.pii_blocker()
 
     edited_query = input_guardrails.blocked_user_query
@@ -64,4 +68,3 @@ async def ingest_query(user_query: UserQuery):
     saved_query["pii flag"] = input_guardrails.pii_detected
 
     return {"message": "Query ingested successfully."}
-
