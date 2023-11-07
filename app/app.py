@@ -2,15 +2,12 @@
 import fastapi
 import loguru
 
-m
 # Initialize app:
 app = fastapi.FastAPI()
 
 # Write some health check or other function here
 
 # General Model initializations:
-
-
 
 # Add routers to the app - create a for loop
 
