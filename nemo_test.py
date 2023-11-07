@@ -38,7 +38,7 @@ def run_app(user_message):
     
     new_message = app.generate(messages=[{
         "role": "user",
-        "content": message + user_message
+        "content": user_message
     }])
 
     print(f"new_message: {new_message}")

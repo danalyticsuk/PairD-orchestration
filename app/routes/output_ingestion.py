@@ -31,7 +31,6 @@ async def ingest_llm_response(llm_response: LLMResponse):
         pii_blocker = PIIBlocker()
         pii_blocker._scrubber = pii_dict
         
-        pdb.set_trace()
         llm_response = pii_blocker.remask(llm_response.llm_response)
 
     saved_query["llm response"] = llm_response
