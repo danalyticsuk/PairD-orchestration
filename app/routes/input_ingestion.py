@@ -8,7 +8,7 @@ from pydantic import BaseModel
 
 import pdb
 
-from app.PIIBlocker import PIIBlocker
+from app.PII_Blocker.PIIBlocker import PIIBlocker
 from app.saved_query import saved_query
 
 

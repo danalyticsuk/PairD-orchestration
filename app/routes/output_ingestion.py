@@ -9,7 +9,7 @@ from pydantic import BaseModel
 import pdb
 
 from app.saved_query import saved_query
-from app.PIIBlocker import PIIBlocker
+from app.PII_Blocker.PIIBlocker import PIIBlocker
 
 router = fastapi.APIRouter()
 
