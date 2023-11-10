@@ -5,6 +5,7 @@ This endpoint ingests raw user queries.
 # Imports:
 import fastapi
 from pydantic import BaseModel
+import time
 
 import pdb
 
@@ -61,8 +62,6 @@ async def ingest_query(user_query: UserQuery):
 
     if not user_query.query:
         raise fastapi.HTTPException(status_code=422, detail="Input string cannot be empty")
-
-    import time
 
     start_time = time.time()
     input_guardrails.pii_blocker()

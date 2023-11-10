@@ -3,7 +3,7 @@ import requests
 from fastapi.testclient import TestClient
 from app.app import app
 from app.routes.input_ingestion import InputGuardrails
-from app.PIIBlocker import PIIBlocker
+from app.PII_Blocker.PIIBlocker import PIIBlocker
 
 
 # Testing Classes - one per endpoint
@@ -65,9 +65,39 @@ class TestIngestQueryEndpoint(unittest.TestCase):
         self.assertEqual(input_guardrails.blocked_user_query, expected_blocked_string)
         self.assertEqual(input_guardrails.pii_dict, expected_pii_dict)
         self.assertEqual(input_guardrails.pii_detected, True)
+
+    def test_valid_adversarial_attack(self):
+
+        input_guardrails = InputGuardrails("hfdfgabgndsdgffhnsh====")
+        input_guardrails.adversarial_attack_blocker()
+        self.assertEqual(input_guardrails.gibberish_detector.detected_gibberish, True)
+
+    def test_no_adversarial_attack(self):
+
+        input_guardrails = InputGuardrails("SELECT *\nFROM SCHEMA.TABLE_ONE\nWHERE NAMES IN ('NAME_ONE', 'NAME_TWO')\n--AND TYPE=TYPE_ONE")
+        input_guardrails.adversarial_attack_blocker()
+        self.assertEqual(input_guardrails.gibberish_detector.detected_gibberish, False)
+
+
+class TestInputFailedEndpoint(unittest.TestCase):
+    def setUp(self):
+        self.client = TestClient(app)
+
+    def tearDown(self):
+        self.client.__enter__().close()
+
+    def gibberish_detected(self):
+
+        self.client.post("/ingest_query", json={"query": "hfdfgabgndsdgffhnsh===="})
+        response = self.client.get("/processed_query")
+
+        error_message = "Cannot process this request as a possible adversarial attack has been detected."
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"error message": error_message, "gibberish flag": True})
     
 
-class TestIngestPostEndpoint(unittest.TestCase):
+class TestInputPostEndpoint(unittest.TestCase):
     def setUp(self):
         self.client = TestClient(app)
 
@@ -78,11 +108,11 @@ class TestIngestPostEndpoint(unittest.TestCase):
         """
         This test ensures the get request successfully returns the posted query
         """
-        self.client.post("/ingest_query", json={"query": "User query is found"})
-        response = self.client.get("/processed_query")
+        self.client.post("/ingest_query", json={"query": "hfdfgabgndsdgffhnsh===="})
+        response = self.client.get("/failed_query")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.json(), {"edited_query": "Guardrails applied to: User query is found"})
+        self.assertEqual(response.json(), {"error message": "Cannot process this request as a possible adversarial attack has been detected.", 'gibberish flag': True})
 
 
 class TestIngestLLMResponseEndpoint(unittest.TestCase):

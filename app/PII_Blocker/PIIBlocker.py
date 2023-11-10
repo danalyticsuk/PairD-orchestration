@@ -319,4 +319,3 @@ class PIIBlocker(object):
             detectedPII.append([filth.text ,("["+FilthReplacer.filth_label(filth)+"]"), True])
 
         return detectedPII
-
