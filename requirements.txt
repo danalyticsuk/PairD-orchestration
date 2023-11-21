@@ -1,3 +1,7 @@
 openai==0.28.1
 langchain==0.0.295
 scrubadub-spacy==2.0.0
+datasets==2.15.0
+sentence_transformers==2.2.2
+setfit==0.7.0
+huggingface_hub==0.19.4
