@@ -10,13 +10,6 @@ define user ask appropriate
   "What are your sustainability and ESG (Environmental, Social, and Governance) goals, and how can we assist in achieving them?"
   "How do you measure the success of your current consulting engagements, and what key performance indicators are you tracking?"
 
-define user ask off topic
-  "How's the weather today?"
-  "Can you recommend a good restaurant nearby?"
-  "How do I cook spaghetti?"
-  "What are the best tourist attractions in Paris?"
-  "What should I do at the weekend?"
-
 
 define user ask religion
   "Which is the most quoted bible verse?"
