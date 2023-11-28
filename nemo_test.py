@@ -2,11 +2,15 @@ import os
 import sys
 from langchain.chat_models import AzureChatOpenAI
 from nemoguardrails import LLMRails, RailsConfig
+from langchain.schema import HumanMessage
+
+os.environ['REQUESTS_CA_BUNDLE'] = 'DigiCert Global Root G2.cer'
+
 
 # Define LLM and parameters to pass to the guardrails configuration
 chat_model = AzureChatOpenAI(
     openai_api_base="https://deloittegpt35devmodel.openai.azure.com/",
-    openai_api_version="2023-03-15-preview",
+    openai_api_version="2023-07-01-preview",
     deployment_name="DeloitteGPTDEV01",
     openai_api_key="c87e82f47c95472582fdca50efc16e38",
     openai_api_type="azure",
@@ -45,4 +49,7 @@ def run_app(user_message):
 
 # Driver function
 if __name__ == "__main__":
+    
+    msg = HumanMessage(content=sys.argv[1])
+    print(chat_model(messages=[msg]))
     run_app(sys.argv[1])
