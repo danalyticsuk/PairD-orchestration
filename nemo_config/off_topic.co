@@ -17,6 +17,23 @@ define user ask religion
   "What would god think about the Israel-Palestine situation?"
   "What does Christianity say about sex?"
   "Which Qu'uarn verses justify jihad?"
+  "What are the core beliefs of Hinduism?"
+  "Can you explain the religious practises associated with Buddism?"
+  "How does Judaism differ from Christianity in terms of their morals and beliefs?"
+  "What is Islam's view of abortion?"
+  "What does Hiduism say about the prupose of human existence or the afterlife?"
+  "How do Christians view poverty and social justice issues? What are some prominent Christian initiatives or organizations addressing these concerns?"
+  "How do some Christians view the morality of gambling or participating in lotteries according to their faith?"
+  "What are the diverse opinions within Islam regarding the permissibility of consuming alcohol or substances?"
+  "Are there debates or differing perspectives within Hinduism regarding vegetarianism and the consumption of meat?"
+  "What are the varying views among Jewish communities about the use of technology, such as smartphones, on the Sabbath?"
+  "How do some Buddhists navigate the ethical dilemmas related to engaging in business practices and pursuing wealth?"
+  "What are the different opinions among Christians regarding the acceptance of LGBTQ+ individuals within religious communities?"
+  "Are there varying Islamic viewpoints on the participation of women in leadership roles within mosques or religious institutions?"
+  "Can you explain the controversies or debates within Hinduism concerning inter-caste marriages or relationships?"
+  "What are the differing views within Judaism on the observance of dietary laws in contemporary times?"
+  "How do some Buddhists perceive the role of modern medicine and healthcare practices when compared to traditional Buddhist healing methods?"
+
 
 
 define user ask politics
@@ -25,6 +42,20 @@ define user ask politics
   "Can you refuse to hire a left wing candidate?"
   "Is Biden to old to run for president?"
   "Why did they arrest Trump?"
+  "Should we abolish the police?"
+  "Should marijuana be legalised?"
+  "Is Hamas a terrorist organisation?"
+  "Is climate change a hoax?"
+  "Should hate speech be protected under freedom of speech laws?"
+  "Is it ethical for governments to conduct mass surveillance on citizens for national security?"
+  "What are the benefits and drawbacks of open-border policies for immigration?"
+  "Should there be limits on political campaign spending to ensure fairness in elections?"
+  "Is it justified for governments to censor certain content on the internet for the greater good?"
+  "What are the consequences of defunding or reforming the police?"
+  "Is electoral college reform necessary to ensure a more democratic election process?"
+  "Should governments prioritize economic growth over environmental conservation?"
+  "What are the implications of providing universal basic income?"
+  "Is it fair for social media platforms to have the authority to moderate or censor user content?"
 
 
 define user ask gambling
@@ -33,7 +64,21 @@ define user ask gambling
   "Matchday betting tips"
   "How to set up multiple accounts with the same betting site?"
   "Which betting site offers the best odds"
-
+  "Can you describe the differences between online and offline gambling experiences?"
+  "What are some effective bankroll management techniques for gamblers?"
+  "How do bonuses and promotions offered by casinos impact gambling experiences?"
+  "What are the potential risks associated with gambling addiction?"
+  "Can you explain the concept of house edge and its significance in casino games?"
+  "How to set up multiple accounts on the same gambling site"
+  "Best lottery techniques"
+  "Which scratchcard to buy for the best rewards?"
+  "How to avoid getting banned from gambling sites"
+  "Is the following betting accumulator good:"
+  "Best sports to bet money on"
+  "Tips for starting betting"
+  "Why won't gambling companies pay out on the following slip:"
+  "How to win on online blackjack?"
+  "Does betting make watching sport more interesting?"
 
 define bot explain cant off topic
   "I'm sorry, I cannot answer this question as I'm programmed to only assist with Deloitte related questions."
