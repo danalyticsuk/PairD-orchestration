@@ -3,8 +3,13 @@ import sys
 from langchain.chat_models import AzureChatOpenAI
 from nemoguardrails import LLMRails, RailsConfig
 from langchain.schema import HumanMessage
+import ssl
+#from dotenv import load_dotenv
 
 os.environ['REQUESTS_CA_BUNDLE'] = 'DigiCert Global Root G2.cer'
+
+ssl._create_default_https_context = ssl._create_unverified_context
+
 
 
 # Define LLM and parameters to pass to the guardrails configuration
@@ -51,5 +56,5 @@ def run_app(user_message):
 if __name__ == "__main__":
     
     msg = HumanMessage(content=sys.argv[1])
-    print(chat_model(messages=[msg]))
+    print(chat_model(messages=[msg]).content)
     run_app(sys.argv[1])

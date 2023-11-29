@@ -62,13 +62,12 @@ ipython_config.py
 __pypackages__/
 
 # Environments
-ai_institute
+paird_venv
 
 # mkdocs documentation
 /site
 
 # Other documents:
 
-paird
 
 

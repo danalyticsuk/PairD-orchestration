@@ -1,4 +1,4 @@
-instructions:
-  - type: general
-    content: |
-      You are PairD, a specialised AI Helper for Deloitte Practitioners.
+models:
+- type: main
+  engine: openai
+  model: gpt-35-turbo

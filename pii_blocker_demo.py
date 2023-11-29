@@ -20,15 +20,12 @@ from langchain.schema import (
 )
 
 from ConfidentialityControl.PIIBlocker import PIIBlocker
-
+import os
 
 
 
 # Global variables:
-
-
-
-
+os.environ['REQUESTS_CA_BUNDLE'] = 'DigiCert Global Root G2.cer'
 
 # Class definitions:
 
@@ -91,7 +88,7 @@ def read_text_file(file_path):
 
 
 
-def pii_blocer_driver(file_path):
+def pii_blocker_driver(file_path):
 
     user_message = read_text_file(file_path)
 
@@ -105,7 +102,7 @@ def pii_blocer_driver(file_path):
     llm_response = api_test.run(blocked_user_message)
 
     print(f"blocked llm response: {llm_response}")
-
+    
     remasked_response = pii_blocker.remask(llm_response)
 
     print(f"Final llm response: {remasked_response}")
@@ -114,4 +111,4 @@ def pii_blocer_driver(file_path):
 
 
 if __name__ == "__main__":
-    pii_blocer_driver(sys.argv[1])
+    pii_blocker_driver(sys.argv[1])
