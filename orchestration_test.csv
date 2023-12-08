@@ -1,0 +1,19 @@
+type,examples,
+ppt_creator,'draft a slide with an overview of the key market trends'
+email_creator,'write an email with an overview of the key market trends'
+tone_changer,'ensure the following content is more formal for clients'
+summariser,'ensure you summarise the following content before showing clients'
+proofreader,'check the spelling and grammar before sending to clients'
+general_email,'ensure emails are reviewed regularly'
+general_powerpoint,'ensure powerpoints are appealiing to clients'
+general_summary,'best ways to summarise key information'
+
+Emails/powerpoints/summaries:
+"tips for writing good emails"
+,"tips for writing good emails about creating powerpoint slides"
+,"how many emails contain references to writing other emails"
+,"how many emails are made more formal??"
+,"how many emails provide summaries of market trends"
+,"how many emails have good spelling and grammar"
+,"how many emails contain references to powerpoints"
+,"how many emails are essentially summaries of others"
