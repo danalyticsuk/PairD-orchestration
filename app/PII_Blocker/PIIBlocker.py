@@ -3,7 +3,9 @@ import scrubadub, scrubadub_spacy
 from typing import Optional, Union
 import re
 
-import spacy_transformers
+#import nltk
+#nltk.download('punkt')
+#import spacy_transformers
 
 from ConfidentialityControl.UniqueDetector import UniqueDetector
 from ConfidentialityControl.WhitelistScrubber import WhitelistScrubber

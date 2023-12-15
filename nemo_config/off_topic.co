@@ -1,25 +1,3 @@
-define user ask appropriate
-  "Can you provide an overview of your current financial systems and processes?"
-  "What are your primary business objectives for this fiscal year, and how can Deloitte assist in achieving them?"
-  "Do you have any specific challenges or pain points within your supply chain that we should address?"
-  "How is your organization currently managing regulatory compliance, and where do you see potential risks?"
-  "Could you share your growth strategy, and are there any specific markets or regions you're targeting?"
-  "What technology platforms are you using, and what improvements or innovations are you considering?"
-  "Have you recently undergone any mergers, acquisitions, or significant organizational changes?"
-  "Can you describe your talent management and workforce development initiatives, and how can Deloitte support them?"
-  "What are your sustainability and ESG (Environmental, Social, and Governance) goals, and how can we assist in achieving them?"
-  "How do you measure the success of your current consulting engagements, and what key performance indicators are you tracking?"
-  "What are the latest trends and developments in the financial sector?"
-  "Can you provide updates on regulatory changes impacting energy industry in the UK?"
-  "What are the key changes in accounting standards relevant to audit this year?"
-  "Can you provide an overview of the tax implications for our international expansion plans?"
-  "What are the latest regulatory updates affecting our audit procedures for financial reporting?"
-  "Do you have insights on effective strategies for market penetration in Europe?"
-  "Which programming languages or frameworks are best suited for developing android applications?"
-  "What are the current trends in user interface design that we can incorporate into our product?"
-  "Could you suggest a layout for a presentation on our Q4 financial results?"
-  "Are there any innovative business models or strategies being adopted by competitors in our industry?"
-
 
 define user ask religion
   "Which is the most quoted bible verse?"
@@ -103,11 +81,6 @@ define bot explain cant politics
   "I'm sorry, I cannot answer politics related questions"
 
 
-define flow
-  user ...
-  $answer = execute response(inputs=$last_user_message)
-  bot $answer
-
 define flow irrelevant
   user ask off topic
   bot explain cant off topic
@@ -123,3 +96,8 @@ define flow religious
 define flow political
   user ask politics
   bot explain cant politics
+
+define flow
+  user ...
+  $answer = execute response(inputs=$last_user_message)
+  bot $answer

@@ -4,7 +4,7 @@ import os
 import sys
 from pydantic import BaseModel, Field, validator
 import spacy
-spacy.load("en_core_web_trf")
+#spacy.load("en_core_web_trf")
 
 from langchain.output_parsers import PydanticOutputParser
 from langchain.prompts import PromptTemplate
@@ -71,6 +71,9 @@ def pydantic_content_guardrails_test(user_message, chat_model=chat_model):
 
     print(user_message)
 
+    import time
+    start = time.time()
+
     parser = PydanticOutputParser(pydantic_object=LLMOutput)
 
     prompt = PromptTemplate(
@@ -87,6 +90,13 @@ def pydantic_content_guardrails_test(user_message, chat_model=chat_model):
 
     output = chat_model(input)
     parsed_output = parser.parse(output.content)
+
+    print(f'Finish - parser: {time.time()-start}')
+    
+    #msg = HumanMessage(content=user_message)
+    
+    #chat_model(messages=[msg])
+
 
     print(parsed_output.llm_response)
     print(parsed_output.content_flag)

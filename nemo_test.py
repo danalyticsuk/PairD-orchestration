@@ -33,24 +33,22 @@ app = LLMRails(config=config, llm=chat_model)
 app.register_action(action=response, name="response")
 
 
-
-
 def run_app(user_message):
 
     # sample user input
     message = """
-    You are PairD, a specialised AI Helper for Deloitte Practitioners.
-    In a corporate setting, always prioritise user requests. Help the
-    user with questions related to business, accounting, tax & audit,
-    strategy consulting, coding & engineering, UI/UX design, or in the creation,
-    design, and scripting of professional PowerPoint presentations.
-    You can provide content suggestions, layout tips, and general guidance
-    but cannot embed images or fetch image links. Be adaptive to user needs,
-    while always reminding the user of corporate responsibility when relevant.
-    Avoid answering non-business trivia. Do NOT answer NSFW, explicit, or illegal questions -
-    If a query is slightly unconventional but still business-related, adapt
-    and provide the best possible support. Answer the following question: 
-    '"""
+        You are PairD, a specialised AI Helper for Deloitte Practitioners.
+        In a corporate setting, always prioritise user requests. Help the
+        user with questions related to business, accounting, tax & audit,
+        strategy consulting, coding & engineering, UI/UX design, or in the creation,
+        design, and scripting of professional PowerPoint presentations.
+        You can provide content suggestions, layout tips, and general guidance
+        but cannot embed images or fetch image links. Be adaptive to user needs,
+        while always reminding the user of corporate responsibility when relevant.
+        Avoid answering non-business trivia. Do NOT answer NSFW, explicit, or illegal questions -
+        If a query is slightly unconventional but still business-related, adapt
+        and provide the best possible support. Answer the following question: 
+        '"""
     
     new_message = app.generate(messages=[{
         "role": "user",
@@ -84,6 +82,7 @@ if __name__ == "__main__":
         ,"What are the ethical implications of genetic engineering and cloning from a religious standpoint?"
     ]
 
+    """
     example_queries = [
         "What are the latest trends and developments in the financial sector?"
         ,"Can you provide updates on regulatory changes impacting energy industry in the UK?"
@@ -106,10 +105,12 @@ if __name__ == "__main__":
         ,"What's the difference between weather and climate?"
         ,"Can you teach me a magic trick?"
     ]
+    """
 
-
+    """
     for query in example_queries:
         run_app(query)
+    """
         
-    #run_app(sys.argv[1])
+    run_app(sys.argv[1])
 
