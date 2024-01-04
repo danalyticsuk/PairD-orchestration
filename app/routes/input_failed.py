@@ -21,9 +21,16 @@ async def get_failed_query():
 
     # Initalizations of content flags:
     gibberish_flag = saved_query.get("gibberish flag", "Flag not found")
+    attack_flag = saved_query.get("attack flag", "Flag not found")
 
     # Declaration of error message:
     if gibberish_flag:
+        error_message = "Cannot process this request as gibberish has been detected."
+
+    if attack_flag:
         error_message = "Cannot process this request as a possible adversarial attack has been detected."
 
-    return {"error message": error_message, "gibberish flag": gibberish_flag}
+    if gibberish_flag and attack_flag:
+        error_message = "Cannot process this request as a possible adversarial attack and gibberish has been detected."
+
+    return {"error message": error_message, "gibberish flag": gibberish_flag, "attack flag": attack_flag}

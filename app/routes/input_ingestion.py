@@ -10,7 +10,8 @@ import time
 import pdb
 
 from app.PII_Blocker.PIIBlocker import PIIBlocker
-from app.Gibberish_Detector.GibberishDetector import GibberishDetector
+from app.Gibberish_Detector.gibberish_detector import GibberishDetector
+from app.Adversarial_Attack_Blocker.adversarial_attack_blocker import AttackDetector
 
 from app.saved_query import saved_query
 
@@ -43,18 +44,25 @@ class InputGuardrails():
 
         pass
 
+    def run_gibberish_detector(self):
+
+        gibberish_detector = GibberishDetector()
+        gibberish_detector.process_sentences_from_text(self.user_query)
+
+        return gibberish_detector.detected_gibberish
+
     def adversarial_attack_blocker(self):
 
-        self.gibberish_detector = GibberishDetector()
-        self.gibberish_detector.process_sentences(self.user_query)
+        attack_detector = AttackDetector()
+        attack_detector.process_sentences_from_text(self.user_query)
+
+        return attack_detector.detected_attack
 
 
-# Write endpoint
+# Endpoint:
 
 @router.post("/ingest_query")
 async def ingest_query(user_query: UserQuery):
-
-    passed_input_controls = True
     
     # Guardrails logic goes here:
     input_guardrails = InputGuardrails(user_query.query)
@@ -66,15 +74,11 @@ async def ingest_query(user_query: UserQuery):
     input_guardrails.pii_blocker()
     print(f"PII blocker time taken: {time.time() - start_time}")
     start_time = time.time()
-    input_guardrails.adversarial_attack_blocker()
+    gibberish_detected = input_guardrails.run_gibberish_detector()
+    print(f"Gibberish Detector time taken: {time.time() - start_time}")
+    start_time = time.time()
+    attack_detected = input_guardrails.adversarial_attack_blocker()
     print(f"Adversarial Attack blocker time taken: {time.time() - start_time}")
-
-    # Gibberish detector flag:
-    if input_guardrails.gibberish_detector.detected_gibberish:
-        gibberish_detected = True
-        passed_input_controls = False
-    else:
-        gibberish_detected = False
 
     edited_query = input_guardrails.blocked_user_query
 
@@ -83,6 +87,7 @@ async def ingest_query(user_query: UserQuery):
     saved_query["pii dict"] = input_guardrails.pii_dict
     saved_query["pii flag"] = input_guardrails.pii_detected
     saved_query["gibberish flag"] = gibberish_detected
-    saved_query["passed input controls"] = passed_input_controls
+    saved_query["attack flag"] = attack_detected
+    saved_query["passed input controls"] = not (gibberish_detected and attack_detected)
 
     return {"message": "Query ingested successfully."}
