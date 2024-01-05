@@ -56,6 +56,8 @@ class InputGuardrails():
         attack_detector = AttackDetector()
         attack_detector.process_sentences_from_text(self.user_query)
 
+        pdb.set_trace()
+
         return attack_detector.detected_attack
 
 
@@ -76,9 +78,11 @@ async def ingest_query(user_query: UserQuery):
     start_time = time.time()
     gibberish_detected = input_guardrails.run_gibberish_detector()
     print(f"Gibberish Detector time taken: {time.time() - start_time}")
+    """
     start_time = time.time()
     attack_detected = input_guardrails.adversarial_attack_blocker()
     print(f"Adversarial Attack blocker time taken: {time.time() - start_time}")
+    """
 
     edited_query = input_guardrails.blocked_user_query
 
@@ -87,7 +91,8 @@ async def ingest_query(user_query: UserQuery):
     saved_query["pii dict"] = input_guardrails.pii_dict
     saved_query["pii flag"] = input_guardrails.pii_detected
     saved_query["gibberish flag"] = gibberish_detected
-    saved_query["attack flag"] = attack_detected
-    saved_query["passed input controls"] = not (gibberish_detected and attack_detected)
+    #saved_query["attack flag"] = attack_detected
+    #saved_query["passed input controls"] = not (gibberish_detected and attack_detected)
+    saved_query["passed input controls"] = not gibberish_detected
 
     return {"message": "Query ingested successfully."}
